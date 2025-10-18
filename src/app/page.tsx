@@ -1,5 +1,9 @@
-import Image from "next/image";
+import { trpc } from "@/trpc/server";
+import React from "react";
 
-export default function Home() {
-  return <div className="text-red-600 font-extrabold">hello</div>;
+async function page() {
+  const users = await trpc.gerUsers();
+  return <div>{JSON.stringify(users)}</div>;
 }
+
+export default page;
